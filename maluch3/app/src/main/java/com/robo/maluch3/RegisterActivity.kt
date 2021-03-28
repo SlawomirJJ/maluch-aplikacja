@@ -14,6 +14,7 @@ import com.google.firebase.FirebaseApp //tak o se dodalem
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.activity_login.*
 //import com.google.firebase.auth.FirebaseAuth  //? FirebaseAuth
 //import com.google.firebase.auth.com.google.firebase.auth.FirebaseAuth // pojawiła się taka podpowiedz
 //import com.google.firebase.auth.FirebaseUser
@@ -25,6 +26,12 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+
+        //zmiana ekranu z rejestracji do logowania
+        tv_login.setOnClickListener{
+            startActivity(Intent(this@RegisterActivity,LoginActivity::class.java))
+        }
 
 
 
