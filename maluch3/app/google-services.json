@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "104846836238",
+    "project_id": "maluch-43108",
+    "storage_bucket": "maluch-43108.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104846836238:android:94c12538737e93f7eff25f",
+        "android_client_info": {
+          "package_name": "com.robo.maluch3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "104846836238-igvk4phrmttlmpud4uf4ovbt9ob67tjd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.robo.maluch",
+            "certificate_hash": "6ed72882fd0263edcccd73d8563a2bcd67ddaa40"
+          }
+        },
+        {
+          "client_id": "104846836238-iub89slec66p7vmttc5o8nk7brf6jssv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALhB7Cm4Q0h03ckJ5kkFVueDfVSYfwXjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "104846836238-iub89slec66p7vmttc5o8nk7brf6jssv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
