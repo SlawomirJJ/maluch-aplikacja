@@ -34,6 +34,13 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        btn_stop.setOnClickListener{
+            database.setValue("stop")
+        }
+
+
+
+
 
 
     }
