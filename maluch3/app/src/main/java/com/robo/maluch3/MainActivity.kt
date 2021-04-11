@@ -47,11 +47,11 @@ class MainActivity : AppCompatActivity() {
         btn_przod.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_przod.setPressed(true)
-                database.setValue("Przod")
+                database.setValue("P")
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_przod.setPressed(false)
-                database.setValue("stop")
+                database.setValue("S")
             }
             true
         })
@@ -60,11 +60,11 @@ class MainActivity : AppCompatActivity() {
         btn_tyl.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_tyl.setPressed(true)
-                database.setValue("tyl")
+                database.setValue("T")
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_tyl.setPressed(false)
-                database.setValue("stop")
+                database.setValue("S")
             }
             true
         })
@@ -73,11 +73,11 @@ class MainActivity : AppCompatActivity() {
         btn_prawo.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_prawo.setPressed(true)
-                database.setValue("prawo")
+                database.setValue("R")
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_prawo.setPressed(false)
-                database.setValue("stop")
+                database.setValue("S")
             }
             true
         })
@@ -86,11 +86,11 @@ class MainActivity : AppCompatActivity() {
         btn_lewo.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_lewo.setPressed(true)
-                database.setValue("lewo")
+                database.setValue("L")
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_lewo.setPressed(false)
-                database.setValue("stop")
+                database.setValue("S")
             }
             true
         })
