@@ -47,11 +47,11 @@ class MainActivity : AppCompatActivity() {
         btn_przod.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_przod.setPressed(true)
-                database.setValue("P")
+                database.child("ESP32").setValue(Sterowanie("P",0,"R"))
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_przod.setPressed(false)
-                database.setValue("S")
+                database.child("ESP32").setValue(Sterowanie("S",0,"R"))
             }
             true
         })
@@ -60,11 +60,11 @@ class MainActivity : AppCompatActivity() {
         btn_tyl.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_tyl.setPressed(true)
-                database.setValue("T")
+                database.child("ESP32").setValue(Sterowanie("T",0,"R"))
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_tyl.setPressed(false)
-                database.setValue("S")
+                database.child("ESP32").setValue(Sterowanie("S",0,"R"))
             }
             true
         })
@@ -73,11 +73,11 @@ class MainActivity : AppCompatActivity() {
         btn_prawo.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_prawo.setPressed(true)
-                database.setValue("R")
+                database.child("ESP32").setValue(Sterowanie("R",0,"R"))
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_prawo.setPressed(false)
-                database.setValue("S")
+                database.child("ESP32").setValue(Sterowanie("S",0,"R"))
             }
             true
         })
@@ -86,11 +86,11 @@ class MainActivity : AppCompatActivity() {
         btn_lewo.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_lewo.setPressed(true)
-                database.setValue("L")
+                database.child("ESP32").setValue(Sterowanie("L",0,"R"))
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_lewo.setPressed(false)
-                database.setValue("S")
+                database.child("ESP32").setValue(Sterowanie("S",0,"R"))
             }
             true
         })
