@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View.OnTouchListener
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -97,5 +100,26 @@ class MainActivity : AppCompatActivity() {
 
 
 
+       var getdata =object:ValueEventListener{
+           override fun onCancelled(p0: DatabaseError) {
+               TODO("Not yet implemented")
+           }
+       }
+
+        fun onDataChange(p0: DataSnapshot){
+            var sb = StringBuilder()
+            for(i in p0.children){
+                var odleglosc_przejechana =i.child("odleglosc_przejechana").getValue()
+                var predkosc =i.child("predkosc").getValue()
+                var przeszkoda =i.child("przeszkoda").getValue()
+            }
+        }
+/*
+        for (data in p0.children)
+        {
+
+        }
+
+*/
     }
 }
