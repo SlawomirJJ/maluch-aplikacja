@@ -143,14 +143,16 @@ class MainActivity : AppCompatActivity() {
                 if(i.key=="PRZ")
                 {
                     var odleglosc_przejechana = i.child("odleglosc_przejechana").getValue()
-                    var predkosc = i.child("predkosc").getValue()
+                        var odleglosc = String.format("%.2f",odleglosc_przejechana )
+                    var predkoscbz = i.child("predkosc").getValue()
+                        var predkosc = String.format("%.2f",predkoscbz)
                     var przeszkoda = i.child("przeszkoda").getValue()
                     if(przeszkoda=="true")
                     {
                         prz="przeszkoda!!!"
                     }
-                    odl.append("trasa: $odleglosc_przejechana \n")
-                    pr.append("prędkość: $predkosc \n")
+                    odl.append("trasa: $odleglosc [m]")
+                    pr.append("prędkość: $predkosc [m/s]")
                 }
                }
 
