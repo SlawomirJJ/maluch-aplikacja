@@ -60,12 +60,12 @@ class RegisterActivity : AppCompatActivity() {
                 val email: String =editTextTextEmailAddress.text.toString().trim{it <=' '}
                 val password: String =editTextTextPassword2.text.toString().trim{it <=' '}
 
-                //Create an instance and create a register a user with email and password
+
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
                     .addOnCompleteListener(
                         OnCompleteListener<AuthResult>{task ->
 
-                            //if the registration is succesfully done
+                            
                             if (task.isSuccessful){
 
                                 //Jesli rejestracja sie powiodla

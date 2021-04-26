@@ -15,8 +15,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val root = FirebaseDatabase.getInstance().reference.child("PRZ")//reference.root
-
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,28 +25,7 @@ class MainActivity : AppCompatActivity() {
         var database = FirebaseDatabase.getInstance().reference
 
 
-/*        btn_przod.setOnClickListener{
-        database.setValue("Przod")
-        }
 
-
-        btn_tyl.setOnClickListener{
-            database.setValue("Tyl")
-        }
-
-        btn_prawo.setOnClickListener{
-            database.setValue("Prawo")
-        }
-
-        btn_lewo.setOnClickListener{
-            database.setValue("Lewo")
-        }
-
-
-        btn_stop.setOnClickListener{
-            database.setValue("stop")
-        }
-*/
 
 
 
@@ -105,28 +82,9 @@ class MainActivity : AppCompatActivity() {
 
 
 
-/*
-         root.addValueEventListener(new ValueEventListener() {
-             @override
-             public void on DataChange(@NonNull DataSnapshot dataSnapshot){
-                 for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                     add(snapshot.getValue().toString());
-             }
-                 adapter.notifyDataSetChanget();
-             }
-         })
-*/
 
-/*
-        root.addValueEventListener {
-            override fun onDataChange(@NonNull p0: DataSnapshot) {
-                var odleglosc_przejechana = child("odleglosc_przejechana").getValue()
-            }
-        }
 
-*/
 
-       // root.addValueEventListener {
        var getdata =object:ValueEventListener{
            override fun onCancelled(p0: DatabaseError) {
 
@@ -139,20 +97,33 @@ class MainActivity : AppCompatActivity() {
                var odl = StringBuilder()
                var pr = StringBuilder()
                var prz:String=""
+               //var odlegloscPrzejechana: Float= 0.0F
                for (i in p0.children) {
                 if(i.key=="PRZ")
                 {
-                    var odleglosc_przejechana = i.child("odleglosc_przejechana").getValue()
-                        var odleglosc = String.format("%.2f",odleglosc_przejechana )
-                    var predkoscbz = i.child("predkosc").getValue()
-                        var predkosc = String.format("%.2f",predkoscbz)
-                    var przeszkoda = i.child("przeszkoda").getValue()
+                  var  odlegloscPrzejechana = i.child("odleglosc_przejechana").getValue()
+                       if (odlegloscPrzejechana is Double)
+                       {
+                           odlegloscPrzejechana = String.format("%.2f",odlegloscPrzejechana)
+
+                       }
+
+                  var predkosc = i.child("predkosc").getValue()
+                    if (predkosc is Double)
+                    {
+                        predkosc = String.format("%.2f",predkosc)
+
+                    }
+
+                  var przeszkoda = i.child("przeszkoda").getValue()
                     if(przeszkoda=="true")
                     {
                         prz="przeszkoda!!!"
                     }
-                    odl.append("trasa: $odleglosc [m]")
+
+
                     pr.append("prędkość: $predkosc [m/s]")
+                    odl.append("trasa: $odlegloscPrzejechana [m]")
                 }
                }
 
