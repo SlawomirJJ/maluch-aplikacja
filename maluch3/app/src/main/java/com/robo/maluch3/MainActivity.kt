@@ -7,10 +7,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View.OnTouchListener
+import android.widget.SeekBar
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +25,12 @@ class MainActivity : AppCompatActivity() {
 
 
         var database = FirebaseDatabase.getInstance().reference
-
+        var predkosc: Int = 0
+        var predkoscPrzeskalowana=0
+        if (predkosc !=null)
+        {
+            predkoscPrzeskalowana = (predkosc/3.333333333333 + 225).toInt()
+        }
 
 
 
@@ -32,11 +39,11 @@ class MainActivity : AppCompatActivity() {
         btn_przod.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_przod.setPressed(true)
-                database.child("ESP32").setValue(Sterowanie("P",0,"R",255,0))
+                database.child("ESP32").setValue(Sterowanie("P",0,"R",predkoscPrzeskalowana ,0))
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_przod.setPressed(false)
-                database.child("ESP32").setValue(Sterowanie("S",0,"R",255,0))
+                database.child("ESP32").setValue(Sterowanie("S",0,"R",predkosc,0))
             }
             true
         })
@@ -45,11 +52,11 @@ class MainActivity : AppCompatActivity() {
         btn_tyl.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_tyl.setPressed(true)
-                database.child("ESP32").setValue(Sterowanie("T",0,"R",255,0))
+                database.child("ESP32").setValue(Sterowanie("T",0,"R",predkoscPrzeskalowana,0))
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_tyl.setPressed(false)
-                database.child("ESP32").setValue(Sterowanie("S",0,"R",255,0))
+                database.child("ESP32").setValue(Sterowanie("S",0,"R",predkoscPrzeskalowana,0))
             }
             true
         })
@@ -58,11 +65,11 @@ class MainActivity : AppCompatActivity() {
         btn_prawo.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_prawo.setPressed(true)
-                database.child("ESP32").setValue(Sterowanie("R",0,"R",255,0))
+                database.child("ESP32").setValue(Sterowanie("R",0,"R",predkoscPrzeskalowana,0))
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_prawo.setPressed(false)
-                database.child("ESP32").setValue(Sterowanie("S",0,"R",255,0))
+                database.child("ESP32").setValue(Sterowanie("S",0,"R",predkoscPrzeskalowana,0))
             }
             true
         })
@@ -71,11 +78,11 @@ class MainActivity : AppCompatActivity() {
         btn_lewo.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_lewo.setPressed(true)
-                database.child("ESP32").setValue(Sterowanie("L",0,"R",255,0))
+                database.child("ESP32").setValue(Sterowanie("L",0,"R",predkoscPrzeskalowana,0))
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_lewo.setPressed(false)
-                database.child("ESP32").setValue(Sterowanie("S",0,"R",255,0))
+                database.child("ESP32").setValue(Sterowanie("S",0,"R",predkoscPrzeskalowana,0))
             }
             true
         })
@@ -158,7 +165,20 @@ class MainActivity : AppCompatActivity() {
 */
 
 
+    seekBarRC.setOnSeekBarChangeListener(object:SeekBar.OnSeekBarChangeListener{
+        override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+            predkosc = progress.toString().toInt()
+        }
 
+        override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+        }
+
+        override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            //predkosc = progress.toString().toInt()
+        }
+
+    })
 
 
 
@@ -167,6 +187,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+
+
+
+
 
 
 
