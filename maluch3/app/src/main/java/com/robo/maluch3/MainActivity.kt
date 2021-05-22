@@ -3,13 +3,13 @@ package com.robo.maluch3
 //import com.google.firebase.database.DatabaseReference
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View.OnTouchListener
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity() {
         btn_przod.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_przod.setPressed(true)
-                database.child("ESP32").setValue(Sterowanie("P",0,"R"))
+                database.child("ESP32").setValue(Sterowanie("P",0,"R",255,0))
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_przod.setPressed(false)
-                database.child("ESP32").setValue(Sterowanie("S",0,"R"))
+                database.child("ESP32").setValue(Sterowanie("S",0,"R",255,0))
             }
             true
         })
@@ -45,11 +45,11 @@ class MainActivity : AppCompatActivity() {
         btn_tyl.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_tyl.setPressed(true)
-                database.child("ESP32").setValue(Sterowanie("T",0,"R"))
+                database.child("ESP32").setValue(Sterowanie("T",0,"R",255,0))
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_tyl.setPressed(false)
-                database.child("ESP32").setValue(Sterowanie("S",0,"R"))
+                database.child("ESP32").setValue(Sterowanie("S",0,"R",255,0))
             }
             true
         })
@@ -58,11 +58,11 @@ class MainActivity : AppCompatActivity() {
         btn_prawo.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_prawo.setPressed(true)
-                database.child("ESP32").setValue(Sterowanie("R",0,"R"))
+                database.child("ESP32").setValue(Sterowanie("R",0,"R",255,0))
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_prawo.setPressed(false)
-                database.child("ESP32").setValue(Sterowanie("S",0,"R"))
+                database.child("ESP32").setValue(Sterowanie("S",0,"R",255,0))
             }
             true
         })
@@ -71,11 +71,11 @@ class MainActivity : AppCompatActivity() {
         btn_lewo.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_lewo.setPressed(true)
-                database.child("ESP32").setValue(Sterowanie("L",0,"R"))
+                database.child("ESP32").setValue(Sterowanie("L",0,"R",255,0))
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_lewo.setPressed(false)
-                database.child("ESP32").setValue(Sterowanie("S",0,"R"))
+                database.child("ESP32").setValue(Sterowanie("S",0,"R",255,0))
             }
             true
         })
@@ -144,9 +144,18 @@ class MainActivity : AppCompatActivity() {
 
 
 
+        btn_przejdz_do_auto.setOnClickListener{
+            val intent = Intent(this,SterAutoActivity::class.java)
+            startActivity(intent)
+        }
 
+/*
+        btn_pomiary.setOnClickListener{
+            val intent = Intent(this,pomiaryActivity::class.java)
+            startActivity(intent)
+        }
 
-
+*/
 
 
 

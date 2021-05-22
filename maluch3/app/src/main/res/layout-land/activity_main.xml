@@ -6,6 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btn_pomiary"
+        android:layout_width="169dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:text="pomiary"
+        app:layout_constraintBottom_toTopOf="@+id/btn_przejdz_do_auto"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3" />
+
+    <Button
+        android:id="@+id/btn_przejdz_do_auto"
+        android:layout_width="164dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="3dp"
+        android:layout_weight="1"
+        android:text="przejdź do ster autonomicznego"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTrasa"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3" />
+
     <TextView
         android:id="@+id/textViewTrasa"
         android:layout_width="wrap_content"
