@@ -25,12 +25,31 @@ class MainActivity : AppCompatActivity() {
 
 
         var database = FirebaseDatabase.getInstance().reference
-        var predkosc: Int = 0
-        var predkoscPrzeskalowana=0
-        if (predkosc !=null)
-        {
-            predkoscPrzeskalowana = (predkosc/3.333333333333 + 225).toInt()
-        }
+        var predkosc: Int=0
+        var predkoscPrzeskalowana=20
+
+        seekBarRC.setOnSeekBarChangeListener(object:SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                predkosc = progress.toString().toInt()
+                predkoscPrzeskalowana = if (predkosc == 0) {
+                    0
+
+                } else {
+                    (predkosc/3.333333333333 + 225).toInt()
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                //predkosc = progress.toString().toInt()
+            }
+
+        })
+
+
 
 
 
@@ -39,11 +58,11 @@ class MainActivity : AppCompatActivity() {
         btn_przod.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_DOWN) {
                 btn_przod.setPressed(true)
-                database.child("ESP32").setValue(Sterowanie("P",0,"R",predkoscPrzeskalowana ,0))
+                database.child("ESP32").setValue(Sterowanie("P",0,"R",predkoscPrzeskalowana,0))
             }
             if (event.action and MotionEvent.ACTION_MASK == MotionEvent.ACTION_UP) {
                 btn_przod.setPressed(false)
-                database.child("ESP32").setValue(Sterowanie("S",0,"R",predkosc,0))
+                database.child("ESP32").setValue(Sterowanie("S",0,"R",predkoscPrzeskalowana,0))
             }
             true
         })
@@ -165,20 +184,7 @@ class MainActivity : AppCompatActivity() {
 */
 
 
-    seekBarRC.setOnSeekBarChangeListener(object:SeekBar.OnSeekBarChangeListener{
-        override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-            predkosc = progress.toString().toInt()
-        }
 
-        override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
-        }
-
-        override fun onStopTrackingTouch(seekBar: SeekBar?) {
-            //predkosc = progress.toString().toInt()
-        }
-
-    })
 
 
 
