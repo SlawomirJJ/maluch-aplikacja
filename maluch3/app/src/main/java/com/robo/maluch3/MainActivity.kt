@@ -12,7 +12,6 @@ import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -44,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                //predkosc = progress.toString().toInt()
+
             }
 
         })
@@ -170,18 +169,18 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        btn_przejdz_do_auto.setOnClickListener{
+        btn_przejdz_do_auto_pomiary.setOnClickListener{
             val intent = Intent(this,SterAutoActivity::class.java)
             startActivity(intent)
         }
 
-/*
-        btn_pomiary.setOnClickListener{
+
+        btn_pomiaryRC.setOnClickListener{
             val intent = Intent(this,pomiaryActivity::class.java)
             startActivity(intent)
         }
 
-*/
+
 
 
 
