@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 
@@ -13,6 +14,10 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+
+        //Dodane 04.06.2021 !!!!!!!!!!!
+        var database = FirebaseDatabase.getInstance().reference
 
 
         //zmiana ekranu z logowania do rejestracji
@@ -44,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
                     ).show()
                 }
                 else -> {
-                    val email: String = editTextTextEmailAddress2.text.toString().trim { it <= ' ' }
+                    var email: String = editTextTextEmailAddress2.text.toString().trim { it <= ' ' }
                     val password: String = editTextTextPassword.text.toString().trim { it <= ' ' }
 
                     // logowanie przy użyciu FirebaseAuth
@@ -68,6 +73,12 @@ class LoginActivity : AppCompatActivity() {
                                 intent.putExtra("email_id", email)
                                 startActivity(intent)
                                 finish()
+
+
+                                //Dodane 04.06.2021 !!!!!!!!!!!
+                                var imie:String="@.iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+                                database.child(imie).setValue(UserData(name=email,0, 0,0))
+
                             } else {
                                 // Jeżeli zalogowanie się nie powiodło
                                 Toast.makeText(
