@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity() {
         var database = FirebaseDatabase.getInstance().reference
         var predkosc: Int=0
         var predkoscPrzeskalowana=20
-        var przeszkoda="false"
-        var d=0
 
         seekBarRC.setOnSeekBarChangeListener(object:SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -126,55 +124,32 @@ class MainActivity : AppCompatActivity() {
                var prz:String=""
                //var odlegloscPrzejechana: Float= 0.0F
                for (i in p0.children) {
-                    if(i.key=="PRZ")
-                   {
-
-                       var odlegloscPrzejechana = i.child("odleglosc_przejechana").getValue()
-                       if (odlegloscPrzejechana is Double) {
-                           odlegloscPrzejechana = String.format("%.2f", odlegloscPrzejechana)
-
-                       }
-
-                       var predkosc = i.child("predkosc").getValue()
-                       if (predkosc is Double) {
-                           predkosc = String.format("%.2f", predkosc)
+                if(i.key=="PRZ")
+                {
+                  var  odlegloscPrzejechana = i.child("odleglosc_przejechana").getValue()
+                       if (odlegloscPrzejechana is Double)
+                       {
+                           odlegloscPrzejechana = String.format("%.2f",odlegloscPrzejechana)
 
                        }
 
-                       przeszkoda = i.child("przeszkoda").getValue().toString()
+                  var predkosc = i.child("predkosc").getValue()
+                    if (predkosc is Double)
+                    {
+                        predkosc = String.format("%.2f",predkosc)
+
+                    }
+
+                  var przeszkoda = i.child("przeszkoda").getValue()
+                    if(przeszkoda=="true")
+                    {
+                        prz="przeszkoda!!!"
+                    }
 
 
-
-                       /*if (przeszkoda == "true") {
-                           prz = "przeszkoda!!!"
-                           //obstacleNumbers= obstacleNumbers + 1
-                           //database.child("user").setValue(UserData(maxVelocity, obstacleNumbers,distanceTraveled))
-                       }
-                        */
-
-                       pr.append("prędkość: $predkosc [m/s]")
-                       odl.append("trasa: $odlegloscPrzejechana [m]")
-                   }
-                   if(i.key=="user")
-                   {
-                       var name=i.child("name").getValue().toString()
-                       var maxVelocity=i.child("maxVelocity").getValue().toString().toInt()
-                       var obstacleNumbers=i.child("obstacleNumbers").getValue().toString().toInt()
-                       var distanceTraveled=i.child("distanceTraveled").getValue().toString().toInt()
-                       if (przeszkoda == "true") {
-                           prz = "przeszkoda!!!"
-                           if(d==0)
-                           {
-                               obstacleNumbers= obstacleNumbers + 1
-                               d=1
-                               database.child(name).setValue(UserData(name,maxVelocity, obstacleNumbers,distanceTraveled))
-                           }
-
-                       }
-                       else d=0
-                   }
-
-
+                    pr.append("prędkość: $predkosc [m/s]")
+                    odl.append("trasa: $odlegloscPrzejechana [m]")
+                }
                }
 
 
@@ -217,7 +192,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
-
 
 
 
