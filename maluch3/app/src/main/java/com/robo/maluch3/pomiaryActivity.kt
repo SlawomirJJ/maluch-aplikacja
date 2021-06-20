@@ -49,6 +49,8 @@ class pomiaryActivity : AppCompatActivity() {
 
                 var temperatura =StringBuilder()
                 var wilgotnosc = StringBuilder()
+                var maxTemperatura:Double
+                var maxWilgotnosc:Double
 
                 for (i in p0.children) {
                     if(i.key=="PRZ")
@@ -67,10 +69,18 @@ class pomiaryActivity : AppCompatActivity() {
 
                         }
 
+                    if(i.key=="dodatkoweDane")
+                        {
+                            maxTemperatura = i.child("maxTemperatura").getValue().toString().toDouble()
+                            maxWilgotnosc = i.child("maxWilgotnosc").getValue().toString().toDouble()
 
+                        }
 
 
                         var temp= i.child("temperatura").getValue()
+
+
+
                         temperatura.append("$temp")
                         var wilg= i.child("wilgotnosc").getValue()
                         wilgotnosc.append("$wilg")
