@@ -65,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
 
 
                                 val intent =
-                                    Intent(this@LoginActivity, BluetoothActivity::class.java)
+                                    Intent(this@LoginActivity, MainActivity::class.java)
                                 intent.putExtra(
                                     "user_id",
                                     FirebaseAuth.getInstance().currentUser!!.uid
