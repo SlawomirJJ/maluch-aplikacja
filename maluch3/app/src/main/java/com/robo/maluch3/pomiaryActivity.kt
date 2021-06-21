@@ -49,8 +49,9 @@ class pomiaryActivity : AppCompatActivity() {
 
                 var temperatura =StringBuilder()
                 var wilgotnosc = StringBuilder()
-                var maxTemperatura:Double
-                var maxWilgotnosc:Double
+                var maxTemperatura=StringBuilder()
+                var maxWilgotnosc=StringBuilder()
+                //var obstacleNumbers:StringBuilder()
 
                 for (i in p0.children) {
                     if(i.key=="PRZ")
@@ -69,12 +70,7 @@ class pomiaryActivity : AppCompatActivity() {
 
                         }
 
-                    if(i.key=="dodatkoweDane")
-                        {
-                            maxTemperatura = i.child("maxTemperatura").getValue().toString().toDouble()
-                            maxWilgotnosc = i.child("maxWilgotnosc").getValue().toString().toDouble()
 
-                        }
 
 
                         var temp= i.child("temperatura").getValue()
@@ -87,6 +83,17 @@ class pomiaryActivity : AppCompatActivity() {
 
 
                     }
+                    if(i.key=="dodatkoweDane")
+                    {
+                        var maxTemp = i.child("maxTemperatura").getValue().toString().toDouble()
+                        maxTemperatura.append("$maxTemp")
+
+                        var maxWilg = i.child("maxWilgotnosc").getValue().toString().toDouble()
+                        maxWilgotnosc.append("$maxWilg")
+
+                        //obstacleNumbers = i.child("obstacleNumbers").getValue().toString().toInt()
+
+                    }
                 }
 
 
@@ -94,6 +101,8 @@ class pomiaryActivity : AppCompatActivity() {
 
                 textView_temperatura.setText(temperatura)
                 textView_wilgotnosc.setText(wilgotnosc)
+
+                textView_maxTemperatura.setText(maxTemperatura)
 
 
             }
