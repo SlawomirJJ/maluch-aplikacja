@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 
@@ -14,6 +15,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        var database = FirebaseDatabase.getInstance().reference
 
         //zmiana ekranu z logowania do rejestracji
         tv_register.setOnClickListener{
@@ -58,6 +60,8 @@ class LoginActivity : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 ).show()
 
+                                //dodane !!!!!
+                                //database.child("dodatkoweDane").setValue(dodatkoweDane(0.7, 0.6, 0))
 
                                 val intent =
                                     Intent(this@LoginActivity, MainActivity::class.java)

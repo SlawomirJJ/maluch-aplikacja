@@ -28,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         var predkoscPrzeskalowana=0
         var przeszkoda="false"
         var d=0
+        var obstacleNumbers:Int=0
+        var maxTemperatura:Double=0.0
+        var maxWilgotnosc:Double=0.0
 
         seekBarRC.setOnSeekBarChangeListener(object:SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -125,6 +128,7 @@ class MainActivity : AppCompatActivity() {
                var pr = StringBuilder()
                var prz:String=""
                //var odlegloscPrzejechana: Float= 0.0F
+
                for (i in p0.children) {
                    if (i.key == "PRZ") {
                        var odlegloscPrzejechana = i.child("odleglosc_przejechana").getValue()
@@ -140,17 +144,6 @@ class MainActivity : AppCompatActivity() {
                        }
 
                        var przeszkoda = i.child("przeszkoda").getValue()
-
-
-
-                       pr.append("prędkość: $predkosc [m/s]")
-                       odl.append("trasa: $odlegloscPrzejechana [m]")
-                   }
-                   if (i.key == "Dane")
-                   {
-                       var maxTemperatura=i.child("distanceTraveled").getValue().toString().toInt()
-                       var maxWilgotnosc=i.child("distanceTraveled").getValue().toString().toInt()
-                       var obstacleNumbers=i.child("obstacleNumbers").getValue().toString().toInt()
                        if (przeszkoda == "true") {
                            prz = "przeszkoda!!!"
                            if(d==0)
@@ -162,7 +155,19 @@ class MainActivity : AppCompatActivity() {
 
                        }
                        else d=0
-                    }
+
+
+                       pr.append("prędkość: $predkosc [m/s]")
+                       odl.append("trasa: $odlegloscPrzejechana [m]")
+                   }
+                  /*if (i.key == "Dane")
+                   {
+                       maxTemperatura=i.child("distanceTraveled").getValue().toString().toDouble()
+                       maxWilgotnosc=i.child("distanceTraveled").getValue().toString().toDouble()
+                       obstacleNumbers=i.child("obstacleNumbers").getValue().toString().toInt()
+                   }*/
+
+
                }
 
 

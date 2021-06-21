@@ -87,6 +87,7 @@ class pomiaryActivity : AppCompatActivity() {
                     {
                         var maxTemp = i.child("maxTemperatura").getValue().toString().toDouble()
                         maxTemperatura.append("$maxTemp")
+                        //if()
 
                         var maxWilg = i.child("maxWilgotnosc").getValue().toString().toDouble()
                         maxWilgotnosc.append("$maxWilg")
