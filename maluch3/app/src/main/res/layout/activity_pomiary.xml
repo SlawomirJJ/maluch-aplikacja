@@ -7,28 +7,6 @@
     tools:context=".pomiaryActivity">
 
     <TextView
-        android:id="@+id/textView_maxTemperatura"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:text="TextView"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView_licz_przeszkod" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="maksymalna temperatura"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-    <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,7 +20,8 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="409dp"
-        android:layout_height="69dp"
+        android:layout_height="65dp"
+        android:background="?attr/colorSecondary"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -54,9 +33,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="13dp"
             android:text="PRZEJDŹ DO TRYBU"
             android:textAlignment="center"
             android:textAllCaps="false"
+            android:textColor="@color/black"
             android:textDirection="firstStrongRtl"
             android:textSize="16sp" />
 
@@ -72,7 +54,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="autonomicznego" />
+            android:paddingRight="12dp"
+            android:text="autonomicznego"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <TextView

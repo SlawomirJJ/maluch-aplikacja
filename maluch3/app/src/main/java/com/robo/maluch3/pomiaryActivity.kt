@@ -82,7 +82,10 @@ class pomiaryActivity : AppCompatActivity() {
 
                         var maxTemp = i.child("maxTemperatura").getValue()
                         maxTemperatura.append("$maxTemp")
-                        //if()
+                        //if(maxTemp<temp)
+                        //{
+
+                        //}
 
                         var maxWilg = i.child("maxWilgotnosc").getValue()
                         maxWilgotnosc.append("$maxWilg")
@@ -117,9 +120,8 @@ class pomiaryActivity : AppCompatActivity() {
 
                 textView_temperatura.setText(temperatura)
                 textView_wilgotnosc.setText(wilgotnosc)
-                //textView_wilgotnosc.setText(obstacleNumbers)
                 textView_licz_przeszkod.setText(obstacleNumbers)
-                textView_maxTemperatura.setText(maxTemperatura)
+                //textView_maxTemperatura.setText(maxTemperatura)
 
 
             }
