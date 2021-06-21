@@ -22,7 +22,12 @@ class pomiaryActivity : AppCompatActivity() {
 
         var database = FirebaseDatabase.getInstance().reference
 
-
+        var temperaturaWyciagnieta :Double=0.0
+        var wilgotnoscWyciagnieta :Double=0.0
+        var maxTemperaturaWyciagnieta :Double=0.0
+        var maxWilgotnoscWyciagnieta:Double=0.0
+        var obstacleNumbersWyciagnieta:Int=0
+        var przeszkodaWyciagnieta:String="false"
 
 
         btn_przej_do_RC_pomiary.setOnClickListener {
@@ -64,6 +69,14 @@ class pomiaryActivity : AppCompatActivity() {
                         }
 
                         var predkosc = i.child("predkosc").getValue()
+
+                        temperaturaWyciagnieta = i.child("temperatura").getValue().toString().toDouble()
+                        wilgotnoscWyciagnieta = i.child("wilgotnosc").getValue().toString().toDouble()
+                        maxTemperaturaWyciagnieta = i.child("maxTemperatura").getValue().toString().toDouble()
+                        maxWilgotnoscWyciagnieta = i.child("maxWilgotnosc").getValue().toString().toDouble()
+                        obstacleNumbersWyciagnieta = i.child("obstacleNumbers").getValue().toString().toInt()
+                        przeszkodaWyciagnieta = i.child("przeszkoda").getValue().toString()
+
                         if (predkosc is Double)
                         {
                             predkosc = String.format("%.2f",predkosc)
@@ -82,14 +95,19 @@ class pomiaryActivity : AppCompatActivity() {
 
                         var maxTemp = i.child("maxTemperatura").getValue()
                         maxTemperatura.append("$maxTemp")
-                        //if(maxTemp.toString().toDouble()<temp.toString().toDouble())
-                        //{
-                           // maxTemp=temp
-                           // database.child("PRZ").setValue(PRZ("true",temp,maxWilgotnosc, obstacleNumbers))
-                       // }
+                        if(maxTemp.toString().toDouble()<temp.toString().toDouble())
+                        {
+                            maxTemp=temp
+                            database.child("PRZ").setValue(PRZ(temperaturaWyciagnieta,wilgotnoscWyciagnieta,przeszkodaWyciagnieta,maxTemp.toString().toDouble(),maxWilgotnoscWyciagnieta, obstacleNumbersWyciagnieta))
+                        }
 
                         var maxWilg = i.child("maxWilgotnosc").getValue()
                         maxWilgotnosc.append("$maxWilg")
+                        if(maxWilg.toString().toDouble()<wilg.toString().toDouble())
+                        {
+                            maxWilg=wilg
+                            database.child("PRZ").setValue(PRZ(temperaturaWyciagnieta,wilgotnoscWyciagnieta,przeszkodaWyciagnieta,maxTemperaturaWyciagnieta,maxWilg.toString().toDouble(), obstacleNumbersWyciagnieta))
+                        }
 
                         var obstacleNumb = i.child("obstacleNumbers").getValue()
                         obstacleNumbers.append("$obstacleNumb")

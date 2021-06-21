@@ -145,8 +145,8 @@ class MainActivity : AppCompatActivity() {
 
                        }
 
-                       temperatura = i.child("maxWilgotnosc").getValue().toString().toDouble()
-                       wilgotnosc = i.child("maxWilgotnosc").getValue().toString().toDouble()
+                       temperatura = i.child("temperatura").getValue().toString().toDouble()
+                       wilgotnosc = i.child("wilgotnosc").getValue().toString().toDouble()
                        maxTemperatura = i.child("maxTemperatura").getValue().toString().toDouble()
                        maxWilgotnosc = i.child("maxWilgotnosc").getValue().toString().toDouble()
 
