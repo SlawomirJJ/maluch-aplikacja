@@ -80,8 +80,19 @@ class pomiaryActivity : AppCompatActivity() {
                         wilgotnosc.append("$wilg")
 
 
+                        var maxTemp = i.child("maxTemperatura").getValue()
+                        maxTemperatura.append("$maxTemp")
+                        //if()
+
+                        var maxWilg = i.child("maxWilgotnosc").getValue()
+                        maxWilgotnosc.append("$maxWilg")
+
+                        var obstacleNumb = i.child("obstacleNumbers").getValue()
+                        obstacleNumbers.append("$obstacleNumb")
+
+
                     }
-                    if(i.key=="dodatkoweDane")
+                   /* if(i.key=="dodatkoweDane")
                     {
                         var maxTemp = i.child("maxTemperatura").getValue()
                         maxTemperatura.append("$maxTemp")
@@ -93,7 +104,7 @@ class pomiaryActivity : AppCompatActivity() {
                         var obstacleNumb = i.child("obstacleNumbers").getValue()
                         obstacleNumbers.append("$obstacleNumb")
 
-                    }
+                    }*/
                     if(i.key=="ESP32")
                     {
                         //var obstacleNumb = i.child("numero").getValue()

@@ -150,7 +150,7 @@ class MainActivity : AppCompatActivity() {
                            {
                                obstacleNumbers= obstacleNumbers + 1
                                d=1
-                               database.child("Dane").setValue(dodatkoweDane(maxTemperatura,maxWilgotnosc, obstacleNumbers,))
+                               database.child("PRZ").setValue(PRZ("true",maxTemperatura,maxWilgotnosc, obstacleNumbers))
                            }
 
                        }
