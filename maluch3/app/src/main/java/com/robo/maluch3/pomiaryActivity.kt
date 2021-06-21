@@ -121,7 +121,8 @@ class pomiaryActivity : AppCompatActivity() {
                 textView_temperatura.setText(temperatura)
                 textView_wilgotnosc.setText(wilgotnosc)
                 textView_licz_przeszkod.setText(obstacleNumbers)
-                //textView_maxTemperatura.setText(maxTemperatura)
+                textView_maxTemperatura.setText(maxTemperatura)
+                textView_maxWilgotnosc.setText(maxWilgotnosc)
 
 
             }
