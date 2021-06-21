@@ -82,10 +82,11 @@ class pomiaryActivity : AppCompatActivity() {
 
                         var maxTemp = i.child("maxTemperatura").getValue()
                         maxTemperatura.append("$maxTemp")
-                        //if(maxTemp<temp)
+                        //if(maxTemp.toString().toDouble()<temp.toString().toDouble())
                         //{
-
-                        //}
+                           // maxTemp=temp
+                           // database.child("PRZ").setValue(PRZ("true",temp,maxWilgotnosc, obstacleNumbers))
+                       // }
 
                         var maxWilg = i.child("maxWilgotnosc").getValue()
                         maxWilgotnosc.append("$maxWilg")

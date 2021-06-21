@@ -29,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         var przeszkoda="false"
         var d=0
         var obstacleNumbers:Int=0
+        var temperatura:Double=0.0
+        var wilgotnosc:Double=0.0
         var maxTemperatura:Double=0.0
         var maxWilgotnosc:Double=0.0
 
@@ -143,6 +145,11 @@ class MainActivity : AppCompatActivity() {
 
                        }
 
+                       temperatura = i.child("maxWilgotnosc").getValue().toString().toDouble()
+                       wilgotnosc = i.child("maxWilgotnosc").getValue().toString().toDouble()
+                       maxTemperatura = i.child("maxTemperatura").getValue().toString().toDouble()
+                       maxWilgotnosc = i.child("maxWilgotnosc").getValue().toString().toDouble()
+
                        var przeszkoda = i.child("przeszkoda").getValue()
                        if (przeszkoda == "true") {
                            prz = "przeszkoda!!!"
@@ -150,7 +157,7 @@ class MainActivity : AppCompatActivity() {
                            {
                                obstacleNumbers= obstacleNumbers + 1
                                d=1
-                               database.child("PRZ").setValue(PRZ("true",maxTemperatura,maxWilgotnosc, obstacleNumbers))
+                               database.child("PRZ").setValue(PRZ(temperatura,wilgotnosc,"true",maxTemperatura,maxWilgotnosc, obstacleNumbers))
                            }
 
                        }
