@@ -25,7 +25,9 @@ class MainActivity : AppCompatActivity() {
 
         var database = FirebaseDatabase.getInstance().reference
         var predkosc: Int=0
-        var predkoscPrzeskalowana=20
+        var predkoscPrzeskalowana=0
+        var przeszkoda="false"
+        var d=0
 
         seekBarRC.setOnSeekBarChangeListener(object:SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -124,32 +126,43 @@ class MainActivity : AppCompatActivity() {
                var prz:String=""
                //var odlegloscPrzejechana: Float= 0.0F
                for (i in p0.children) {
-                if(i.key=="PRZ")
-                {
-                  var  odlegloscPrzejechana = i.child("odleglosc_przejechana").getValue()
-                       if (odlegloscPrzejechana is Double)
-                       {
-                           odlegloscPrzejechana = String.format("%.2f",odlegloscPrzejechana)
+                   if (i.key == "PRZ") {
+                       var odlegloscPrzejechana = i.child("odleglosc_przejechana").getValue()
+                       if (odlegloscPrzejechana is Double) {
+                           odlegloscPrzejechana = String.format("%.2f", odlegloscPrzejechana)
 
                        }
 
-                  var predkosc = i.child("predkosc").getValue()
-                    if (predkosc is Double)
-                    {
-                        predkosc = String.format("%.2f",predkosc)
+                       var predkosc = i.child("predkosc").getValue()
+                       if (predkosc is Double) {
+                           predkosc = String.format("%.2f", predkosc)
 
+                       }
+
+                       var przeszkoda = i.child("przeszkoda").getValue()
+
+
+
+                       pr.append("prędkość: $predkosc [m/s]")
+                       odl.append("trasa: $odlegloscPrzejechana [m]")
+                   }
+                   if (i.key == "Dane")
+                   {
+                       var maxTemperatura=i.child("distanceTraveled").getValue().toString().toInt()
+                       var maxWilgotnosc=i.child("distanceTraveled").getValue().toString().toInt()
+                       var obstacleNumbers=i.child("obstacleNumbers").getValue().toString().toInt()
+                       if (przeszkoda == "true") {
+                           prz = "przeszkoda!!!"
+                           if(d==0)
+                           {
+                               obstacleNumbers= obstacleNumbers + 1
+                               d=1
+                               database.child("Dane").setValue(dodatkoweDane(maxTemperatura,maxWilgotnosc, obstacleNumbers,))
+                           }
+
+                       }
+                       else d=0
                     }
-
-                  var przeszkoda = i.child("przeszkoda").getValue()
-                    if(przeszkoda=="true")
-                    {
-                        prz="przeszkoda!!!"
-                    }
-
-
-                    pr.append("prędkość: $predkosc [m/s]")
-                    odl.append("trasa: $odlegloscPrzejechana [m]")
-                }
                }
 
 
