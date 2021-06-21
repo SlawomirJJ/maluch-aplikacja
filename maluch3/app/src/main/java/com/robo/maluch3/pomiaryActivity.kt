@@ -51,7 +51,7 @@ class pomiaryActivity : AppCompatActivity() {
                 var wilgotnosc = StringBuilder()
                 var maxTemperatura=StringBuilder()
                 var maxWilgotnosc=StringBuilder()
-                //var obstacleNumbers:StringBuilder()
+                var obstacleNumbers=StringBuilder()
 
                 for (i in p0.children) {
                     if(i.key=="PRZ")
@@ -74,10 +74,8 @@ class pomiaryActivity : AppCompatActivity() {
 
 
                         var temp= i.child("temperatura").getValue()
-
-
-
                         temperatura.append("$temp")
+
                         var wilg= i.child("wilgotnosc").getValue()
                         wilgotnosc.append("$wilg")
 
@@ -85,15 +83,21 @@ class pomiaryActivity : AppCompatActivity() {
                     }
                     if(i.key=="dodatkoweDane")
                     {
-                        var maxTemp = i.child("maxTemperatura").getValue().toString().toDouble()
+                        var maxTemp = i.child("maxTemperatura").getValue()
                         maxTemperatura.append("$maxTemp")
                         //if()
 
-                        var maxWilg = i.child("maxWilgotnosc").getValue().toString().toDouble()
+                        var maxWilg = i.child("maxWilgotnosc").getValue()
                         maxWilgotnosc.append("$maxWilg")
 
-                        //obstacleNumbers = i.child("obstacleNumbers").getValue().toString().toInt()
+                        var obstacleNumb = i.child("obstacleNumbers").getValue()
+                        obstacleNumbers.append("$obstacleNumb")
 
+                    }
+                    if(i.key=="ESP32")
+                    {
+                        //var obstacleNumb = i.child("numero").getValue()
+                        //obstacleNumbers.append("$obstacleNumb")
                     }
                 }
 
@@ -102,7 +106,8 @@ class pomiaryActivity : AppCompatActivity() {
 
                 textView_temperatura.setText(temperatura)
                 textView_wilgotnosc.setText(wilgotnosc)
-
+                //textView_wilgotnosc.setText(obstacleNumbers)
+                textView_licz_przeszkod.setText(obstacleNumbers)
                 textView_maxTemperatura.setText(maxTemperatura)
 
 
